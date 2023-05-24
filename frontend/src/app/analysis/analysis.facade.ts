@@ -15,6 +15,12 @@ export class AnalysisFacade {
     });
   }
 
+  public fetchProcessosDataByName(name: string) {
+    this.api.fetchProcessosDataByName(name).subscribe((processosData) => {
+      this.state.setProcessoData(processosData);
+    });
+  }
+
   public getProcessoData() {
     return this.state.getProcessoData();
   }

@@ -17,6 +17,8 @@ export class AnalysisComponent {
       if (params['movimento']) this.selectedMovimento = params['movimento'];
     });
 
+    this.facade.fetchProcessosDataByName(this.selectedMovimento);
+
     this.facade.getProcessoData().subscribe((processoData: Processo[]) => {
       this.processoList = processoData;
     });
