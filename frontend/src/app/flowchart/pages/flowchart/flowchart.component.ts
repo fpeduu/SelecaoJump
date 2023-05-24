@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { FlowchartFacade } from '../../flowchart.facade';
 import { Processo } from '../../types/Processo';
+// import * as d3 from 'd3';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-flowchart',
@@ -8,11 +10,14 @@ import { Processo } from '../../types/Processo';
   styleUrls: ['./flowchart.component.scss'],
 })
 export class FlowchartComponent {
-  selectedMovimento: string = 'Expedição de movimento';
-  processoList: Processo[] = [];
+  flowchartObservable: any;
+  flowchartImage: string = '';
 
   constructor(private facade: FlowchartFacade) {
-    const image = this.facade.getImage();
-    console.log(image);
+    this.flowchartObservable = this.facade.getImage();
+
+    this.flowchartObservable.subscribe((image: any) => {
+      this.flowchartImage = image;
+    });
   }
 }

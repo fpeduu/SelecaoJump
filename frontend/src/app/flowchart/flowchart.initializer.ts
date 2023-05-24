@@ -6,7 +6,7 @@ export const flowchartInitializer =
     flowchartFacade.getImage();
   };
 
-export const analysisInitializerProvider = {
+export const flowchartInitializerProvider = {
   provide: APP_INITIALIZER,
   useFactory: flowchartInitializer,
   multi: true,
