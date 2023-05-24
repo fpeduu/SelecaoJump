@@ -4,7 +4,7 @@ import { Processo } from '../types/Processo';
 import { of } from 'rxjs';
 
 @Injectable()
-export class AnalysisApiService {
+export class FlowchartApiService {
   constructor(private readonly http: HttpClient) {}
 
   public fetchProcessosData() {
