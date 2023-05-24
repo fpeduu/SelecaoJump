@@ -1,13 +1,14 @@
 import { APP_INITIALIZER } from '@angular/core';
-import { AnalysisFacade } from './flowchart.facade';
+import { FlowchartFacade } from './flowchart.facade';
 
-export const analysisInitializer = (analysisFacade: AnalysisFacade) => () => {
-  analysisFacade.fetchProcessosData();
-};
+export const flowchartInitializer =
+  (flowchartFacade: FlowchartFacade) => () => {
+    flowchartFacade.getImage();
+  };
 
 export const analysisInitializerProvider = {
   provide: APP_INITIALIZER,
-  useFactory: analysisInitializer,
+  useFactory: flowchartInitializer,
   multi: true,
-  deps: [AnalysisFacade],
+  deps: [FlowchartFacade],
 };

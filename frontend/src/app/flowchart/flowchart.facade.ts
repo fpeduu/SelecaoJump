@@ -1,21 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AnalysisState } from './state/analysis-state/analysis.state';
-import { AnalysisApi } from './api/flowchart.api';
+import { FlowchartApi } from './api/flowchart.api';
 
 @Injectable()
-export class AnalysisFacade {
-  public constructor(
-    private readonly state: AnalysisState,
-    private readonly api: AnalysisApi
-  ) {}
+export class FlowchartFacade {
+  public constructor(private readonly api: FlowchartApi) {}
 
-  public fetchProcessosData() {
-    this.api.fetchProcessosData().subscribe((processosData) => {
-      this.state.setProcessoData(processosData);
-    });
-  }
-
-  public getProcessoData() {
-    return this.state.getProcessoData();
+  public getImage() {
+    return this.api.getImage();
   }
 }

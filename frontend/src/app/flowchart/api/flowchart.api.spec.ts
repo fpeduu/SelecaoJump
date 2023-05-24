@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FlowchartApiService } from './flowchart.api';
+import { FlowchartApi } from './flowchart.api';
 
-describe('AnalysisApiService', () => {
-  let service: FlowchartApiService;
+describe('FlowchartApiService', () => {
+  let service: FlowchartApi;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FlowchartApiService);
+    service = TestBed.inject(FlowchartApi);
   });
 
   it('should be created', () => {
