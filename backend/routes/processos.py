@@ -47,13 +47,14 @@ async def get_log_stats():
 class ProcessosInfosInput(BaseModel):
     movimento: str
 
-@router.post("/", status_code=200)
-async def get_processos_infos(request: ProcessosInfosInput):
+@router.get("/{movimento}", status_code=200)
+async def get_processos_infos(movimento: str):
     """
     Returns a list of all processos with some stats and a count
     of how many times the given movimento happened.
     """
-    pinned_movimento = request.movimento
+
+    pinned_movimento = movimento
     cases, df = [], core_instance.log.copy()
     df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
 
@@ -64,9 +65,9 @@ async def get_processos_infos(request: ProcessosInfosInput):
         )
         cases.append({
             "NPU": NPU,
-            "movimentosCount": len(group),
-            "duration": trace_duration.total_seconds(),
-            "pinnedMovimentoCount": pinned_movimento_count
+            "totalMovimentos": len(group),
+            "totalDuration": trace_duration.total_seconds(),
+            "movimentos": pinned_movimento_count
         })
 
     return { "cases": cases }

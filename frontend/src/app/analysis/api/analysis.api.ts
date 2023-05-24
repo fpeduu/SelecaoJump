@@ -43,6 +43,6 @@ export class AnalysisApi {
   }
 
   public fetchProcessosDataByName(name: string) {
-    return this.http.get<Processo[]>(`/api/processos/${name}/`);
+    return this.http.get<Processo[]>(`/api/processos/${name}`);
   }
 }
