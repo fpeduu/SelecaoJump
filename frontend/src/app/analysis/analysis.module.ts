@@ -18,12 +18,9 @@ import { MatSortModule } from '@angular/material/sort';
     AnalysisState,
     AnalysisApi,
     AnalysisFacade,
-    analysisInitializerProvider
+    analysisInitializerProvider,
   ],
-  declarations: [
-    AnalysisComponent,
-    AnalysisTableComponent,
-  ],
+  declarations: [AnalysisComponent, AnalysisTableComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -32,6 +29,6 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     AnalysisRoutingModule,
-  ]
+  ],
 })
-export class AnalysisModule { }
+export class AnalysisModule {}

@@ -12,8 +12,12 @@ export class AnalysisComponent {
   selectedMovimento: string = 'Expedição de movimento';
   processoList: Processo[] = [];
 
-  constructor(private facade: AnalysisFacade) {
-    facade.getProcessoData().subscribe((processoData: any) => {
+  constructor(private facade: AnalysisFacade, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe((params) => {
+      if (params['movimento']) this.selectedMovimento = params['movimento'];
+    });
+
+    this.facade.getProcessoData().subscribe((processoData: Processo[]) => {
       this.processoList = processoData;
     });
   }

@@ -5,8 +5,7 @@ import { of } from 'rxjs';
 
 @Injectable()
 export class AnalysisApi {
-
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   public fetchProcessosData() {
     return of([
@@ -40,7 +39,7 @@ export class AnalysisApi {
         totalMovimentos: 6,
         totalDuration: 60,
       },
-    ] as Processo[])
+    ] as Processo[]);
   }
 
   public fetchProcessosDataByName(name: string) {
