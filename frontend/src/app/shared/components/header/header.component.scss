@@ -1,24 +1,24 @@
 #app-header {
-    display: inline-flex;
-    
-    .logo-image {
-        width: 10em;
-    }
+  display: inline-flex;
 
-    span {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.5em;
-        padding: 0 2em;
-    }
+  .logo-image {
+    width: 10em;
+  }
 
-    span:hover {
-        background-color: #e6e6e6;
-    }
+  span {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0 2em;
+  }
 
-    p {
-        font-size: large;
-        font-weight: 500;
-    }
+  span:hover {
+    background-color: #e6e6e6;
+  }
+
+  p {
+    font-size: large;
+    font-weight: 500;
+  }
 }
