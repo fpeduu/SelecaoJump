@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 import * as d3 from 'd3';
 
 @Component({
-  selector: 'app-flowchart-image',
-  templateUrl: './flowchart-image.component.html',
-  styleUrls: ['./flowchart-image.component.scss'],
+  selector: 'app-process-stats',
+  templateUrl: './process-stats.component.html',
+  styleUrls: ['./process-stats.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FlowchartImageComponent implements OnInit, OnChanges {
+export class ProcessStatsComponent implements OnInit, OnChanges {
   @Input() image: string = '';
   @ViewChild('flowchartContainer', { static: true })
   flowchartContainer: ElementRef = new ElementRef('');
