@@ -8,4 +8,8 @@ export class FlowchartFacade {
   public getImage() {
     return this.api.getImage();
   }
+
+  public getStats() {
+    return this.api.getStats();
+  }
 }

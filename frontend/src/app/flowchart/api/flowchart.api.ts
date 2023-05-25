@@ -10,4 +10,8 @@ export class FlowchartApi {
       responseType: 'text' as 'json',
     });
   }
+
+  public getStats() {
+    return this.http.get<any>(`/api/processos/stats/`);
+  }
 }

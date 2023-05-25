@@ -1,7 +1,28 @@
-#app-analysis-table {
-  margin: 1em;
+#app-process-stats {
+  padding: 1em;
 
-  .info-icon {
-    width: 1rem;
+  width: 90vw;
+
+  display: flex;
+
+  mat-card {
+    width: 20%;
+    color: gray;
+
+    padding: 1em;
+    font-size: 1.2em;
+
+    mat-card-title {
+      font-size: 0.7em;
+    }
+
+    mat-card-content {
+      padding: 0;
+      font-weight: 600;
+    }
+  }
+
+  mat-card + mat-card {
+    margin-left: 1em;
   }
 }

@@ -1,1 +1,26 @@
-<div #flowchartContainer></div>
+<div id="app-process-stats">
+  <mat-card>
+    <mat-card-title> Qtd. de movimentos </mat-card-title>
+    <mat-card-content>{{ data.movimentosCount }}</mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title> Qtd. de processos </mat-card-title>
+    <mat-card-content>{{ data.casesCount }}</mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title> Média da duração dos movimentos </mat-card-title>
+    <mat-card-content>{{ data.avgMovimentoDuration }}</mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title> Média da duração dos processos </mat-card-title>
+    <mat-card-content>{{ data.avgCaseDuration }}</mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title> Média de movimentos por processo </mat-card-title>
+    <mat-card-content>{{ data.avgMovimentosPerCase }}</mat-card-content>
+  </mat-card>
+</div>
