@@ -18,12 +18,12 @@ export class FlowchartComponent {
   constructor(private facade: FlowchartFacade) {
     this.flowchartObservable = this.facade.getImage();
 
-    this.flowchartObservable.subscribe((image: string) => {
-      this.flowchartImage = image;
+    this.facade.getStats().subscribe((stats: ProcessoStats) => {
+      this.flowchartStats = stats;
     });
 
-    this.facade.getStats().subscribe((stats: ProcessoStats[]) => {
-      this.flowchartStats = stats[0];
+    this.flowchartObservable.subscribe((image: string) => {
+      this.flowchartImage = image;
     });
   }
 }
