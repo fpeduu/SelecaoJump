@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./analysis.component.scss'],
 })
 export class AnalysisComponent {
-  selectedMovimento: string = 'Expedição de movimento';
+  selectedMovimento: string = 'A3';
   processoList: Processo[] = [];
 
   constructor(private facade: AnalysisFacade, private route: ActivatedRoute) {
@@ -17,10 +17,12 @@ export class AnalysisComponent {
       if (params['movimento']) this.selectedMovimento = params['movimento'];
     });
 
+    // this.facade.fetchProcessosData();
     this.facade.fetchProcessosDataByName(this.selectedMovimento);
 
-    this.facade.getProcessoData().subscribe((processoData: Processo[]) => {
-      this.processoList = processoData;
+    this.facade.getProcessoData().subscribe((processoData: any) => {
+      console.log(processoData.cases);
+      this.processoList = processoData.cases;
     });
   }
 }

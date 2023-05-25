@@ -1,8 +1,14 @@
-#app-analysis {
-    p.title {
-        font-size: 2em;
-        font-weight: 300;
-    }
-    
-    padding: 1em;
+#app-flowchart {
+  p.title {
+    font-size: 2em;
+    font-weight: 300;
+
+    align-self: flex-start;
+  }
+
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
