@@ -11,12 +11,16 @@
 
   <mat-card>
     <mat-card-title> Média da duração dos movimentos </mat-card-title>
-    <mat-card-content>{{ data.avgMovimentoDuration }}</mat-card-content>
+    <mat-card-content>{{
+      formatDuration(data.avgMovimentoDuration)
+    }}</mat-card-content>
   </mat-card>
 
   <mat-card>
     <mat-card-title> Média da duração dos processos </mat-card-title>
-    <mat-card-content>{{ data.avgCaseDuration }}</mat-card-content>
+    <mat-card-content>{{
+      formatDuration(data.avgCaseDuration)
+    }}</mat-card-content>
   </mat-card>
 
   <mat-card>
