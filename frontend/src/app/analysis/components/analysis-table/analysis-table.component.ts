@@ -43,14 +43,17 @@ export class AnalysisTableComponent
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
     // TODO: Fix paginator
     // TODO: Sort not working on movimentos/totalMovimentos
   }
 
   ngOnChanges(): void {
     const data = Object.assign([], this.data);
-    this.dataSource = new MatTableDataSource(data);
-    this.dataSource.sort = this.sort;
+
+    if (this.data) {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    }
   }
 }
