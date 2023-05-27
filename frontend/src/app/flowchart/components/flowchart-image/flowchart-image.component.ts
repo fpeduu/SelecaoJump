@@ -31,7 +31,8 @@ export class FlowchartImageComponent implements OnInit, OnChanges {
       });
 
     this.flowchartContainer.nativeElement.innerHTML = this.image;
-    d3.xml('../../../../assets/info-icon.svg').then((data) => {
+
+    d3.xml('assets/info-icon.svg').then((data) => {
       const infoIcon = data.documentElement;
 
       const svg = d3.select(
@@ -40,54 +41,30 @@ export class FlowchartImageComponent implements OnInit, OnChanges {
 
       const nodes = svg.selectAll('.node');
 
-      let positions: number[] = [];
-
-      nodes.each(function (d, i) {
+      nodes.each(function () {
         const node = d3.select(this);
-        const nodePosition = (
-          node.node() as HTMLElement
-        ).getBoundingClientRect();
+        node
+          .attr('cursor', 'pointer')
+          .on('click', () => openProcessDetails(nodeTitle));
 
-        positions.push(nodePosition.y);
-      });
-
-      positions = positions.sort((a, b) => a - b);
-
-      nodes.each(function (d, i) {
-        const node = d3.select(this);
+        const nodeText = node.select('text');
         const nodeTitle = node.select('a').attr('xlink:title');
 
-        const parentPosition = (
-          svg.node() as HTMLElement
-        ).getBoundingClientRect();
-        const nodePosition = (
-          node.node() as HTMLElement
-        ).getBoundingClientRect();
-
-        const nodeIndex = positions.indexOf(nodePosition.y);
+        const nodeTextPosition = {
+          x: Number(nodeText.attr('x')),
+          y: Number(nodeText.attr('y')),
+        };
 
         const svgNode = infoIcon.cloneNode(true);
 
-        const g = svg.append('g');
+        const g = node.append('g');
         g.node()?.appendChild(svgNode);
 
-        const button = g
-          .select('svg')
-          .attr('width', '1em')
-          .on('click', () => openProcessDetails(nodeTitle));
-
-        const buttonSize = (
-          button.node() as HTMLElement
-        ).getBoundingClientRect();
+        const button = g.select('svg').attr('width', '1em');
 
         const position = {
-          x: nodePosition.x - parentPosition.x - buttonSize.width / 2 - 50,
-          y:
-            nodePosition.y -
-            parentPosition.y -
-            buttonSize.height / 2 -
-            375 -
-            nodeIndex * 15,
+          x: nodeTextPosition.x + 50,
+          y: nodeTextPosition.y - 400,
         };
 
         button.attr('x', position.x).attr('y', position.y);
