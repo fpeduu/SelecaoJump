@@ -44,13 +44,35 @@ async def get_log_stats():
         "avgMovimentosPerCase": avg_movimentos_per_case,
     }
 
-class ProcessosInfosInput(BaseModel):
-    movimento: str
+@router.get("/", status_code=200)
+async def get_processos_infos():
+    """
+    Returns a list of all processos with some stats and a count
+    of how many times the given movimento happened.
+    """
+
+    cases, df = [], core_instance.log.copy()
+    df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
+
+    for NPU, group in df.groupby(CASE_ID):
+        trace_duration = group['duration'].sum()
+
+        cases.append({
+            "NPU": NPU,
+            "totalMovimentos": len(group),
+            "totalDuration": trace_duration.total_seconds(),
+            "movimentos": '--'
+        })
+        
+
+
+    return { "cases": cases }
+
 
 @router.get("/{movimento}", status_code=200)
 async def get_processos_infos(movimento: str):
     """
-    Returns a list of all processos with some stats and a count
+    Returns a list of processos with the pinned movimento with some stats and a count
     of how many times the given movimento happened.
     """
 
@@ -63,11 +85,16 @@ async def get_processos_infos(movimento: str):
         pinned_movimento_count = len(
             group[group[ACTIVITY] == pinned_movimento]
         )
-        cases.append({
-            "NPU": NPU,
-            "totalMovimentos": len(group),
-            "totalDuration": trace_duration.total_seconds(),
-            "movimentos": pinned_movimento_count
-        })
+
+        # only add cases that have the pinned movimento
+        if pinned_movimento_count > 0:
+            cases.append({
+                "NPU": NPU,
+                "totalMovimentos": len(group),
+                "totalDuration": trace_duration.total_seconds(),
+                "movimentos": pinned_movimento_count
+            })
+        
+
 
     return { "cases": cases }
