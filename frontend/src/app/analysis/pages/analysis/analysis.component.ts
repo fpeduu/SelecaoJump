@@ -24,9 +24,10 @@ export class AnalysisComponent {
     });
 
     this.facade.getProcessoData().subscribe((processoData: any) => {
-      if (!processoData.cases || processoData.cases.length === 0) {
-        this.title = 'Movimento não encontrado';
-      } else this.title = `Movimento ${this.selectedMovimento}`;
+      if (this.selectedMovimento) {
+        this.title = `Movimento ${this.selectedMovimento}`;
+      } else this.title = 'Todos os movimentos';
+
       this.processoList = processoData.cases;
     });
   }

@@ -1,6 +1,6 @@
 export interface Case {
   NPU: string;
-  movimentos?: number;
+  movimentos?: number | string;
   totalDuration: number;
   totalMovimentos: number;
 }

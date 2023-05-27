@@ -11,6 +11,7 @@ export class AnalysisFacade {
 
   public fetchProcessosData() {
     this.api.fetchProcessosData().subscribe((processosData) => {
+      console.log(processosData);
       this.state.setProcessoData(processosData);
     });
   }
