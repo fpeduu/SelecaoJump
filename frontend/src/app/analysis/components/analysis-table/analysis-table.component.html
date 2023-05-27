@@ -8,23 +8,23 @@
     </ng-container>
 
     <ng-container matColumnDef="movimentos">
-      <th mat-header-cell *matHeaderCellDef>Ocorrências</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ocorrências</th>
       <td mat-cell *matCellDef="let element">
         {{ element.movimentos }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="totalMovimentos">
-      <th mat-header-cell *matHeaderCellDef>Qt. total de movimentos</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Qt. total de movimentos
+      </th>
       <td mat-cell *matCellDef="let element">
         {{ element.totalMovimentos }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        Duração do processo
-      </th>
+      <th mat-header-cell *matHeaderCellDef>Duração do processo</th>
       <td mat-cell *matCellDef="let element">
         {{ formatDuration(element.totalDuration) }}
       </td>

@@ -3,7 +3,6 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  AfterViewInit,
   OnInit,
   OnChanges,
 } from '@angular/core';
@@ -19,9 +18,7 @@ import { formatDuration } from '../../utils/formatDuration';
   styleUrls: ['./analysis-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnalysisTableComponent
-  implements OnInit, AfterViewInit, OnChanges
-{
+export class AnalysisTableComponent implements OnInit, OnChanges {
   @Input() data: readonly Case[] = [];
   @Input() displayedColumns: string[] = [
     'NPU',
@@ -40,11 +37,6 @@ export class AnalysisTableComponent
   ngOnInit(): void {
     const data = Object.assign([], this.data);
     this.dataSource = new MatTableDataSource(data);
-  }
-
-  ngAfterViewInit(): void {
-    // TODO: Fix paginator
-    // TODO: Sort not working on movimentos/totalMovimentos
   }
 
   ngOnChanges(): void {
