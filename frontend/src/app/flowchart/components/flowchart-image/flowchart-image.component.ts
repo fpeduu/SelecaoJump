@@ -18,7 +18,7 @@ import * as d3 from 'd3';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlowchartImageComponent implements OnInit, OnChanges {
-  @Input() image: string = '';
+  @Input() data: string = '';
   @ViewChild('flowchartContainer', { static: true })
   flowchartContainer: ElementRef = new ElementRef('');
 
@@ -30,7 +30,7 @@ export class FlowchartImageComponent implements OnInit, OnChanges {
         queryParams: { movimento: processTitle },
       });
 
-    this.flowchartContainer.nativeElement.innerHTML = this.image;
+    this.flowchartContainer.nativeElement.innerHTML = this.data;
 
     d3.xml('assets/info-icon.svg').then((data) => {
       const infoIcon = data.documentElement;
@@ -75,6 +75,6 @@ export class FlowchartImageComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.image) this.plotImage();
+    if (this.data) this.plotImage();
   }
 }
