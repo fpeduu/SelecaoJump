@@ -45,10 +45,9 @@ async def get_log_stats():
     }
 
 @router.get("/", status_code=200)
-async def get_processos_infos():
+async def get_all_processos_infos():
     """
-    Returns a list of all processos with some stats and a count
-    of how many times the given movimento happened.
+    Returns a list of all processos with some stats
     """
 
     cases, df = [], core_instance.log.copy()
