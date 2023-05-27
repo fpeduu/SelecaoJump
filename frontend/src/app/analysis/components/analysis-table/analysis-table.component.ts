@@ -1,15 +1,15 @@
-import { 
-  Input, 
-  Component, 
+import {
+  Input,
+  Component,
   ChangeDetectionStrategy,
   ViewChild,
   AfterViewInit,
   OnInit,
-  OnChanges, 
+  OnChanges,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { Processo } from '../../types/Processo';
+import { Case } from '../../types/Case';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
@@ -18,13 +18,18 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./analysis-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnalysisTableComponent implements OnInit, AfterViewInit, OnChanges {
-  @Input() data: readonly Processo[] = [];
+export class AnalysisTableComponent
+  implements OnInit, AfterViewInit, OnChanges
+{
+  @Input() data: readonly Case[] = [];
   @Input() displayedColumns: string[] = [
-    'NPU', 'movimentos', 'totalMovimentos', 'duration'
+    'NPU',
+    'movimentos',
+    'totalMovimentos',
+    'duration',
   ];
 
-  dataSource!: MatTableDataSource<Processo>;
+  dataSource!: MatTableDataSource<Case>;
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -40,7 +45,7 @@ export class AnalysisTableComponent implements OnInit, AfterViewInit, OnChanges 
     // TODO: Sort not working on movimentos/totalMovimentos
   }
 
-  ngOnChanges(): void {    
+  ngOnChanges(): void {
     const data = Object.assign([], this.data);
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.sort = this.sort;

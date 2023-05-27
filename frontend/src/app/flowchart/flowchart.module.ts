@@ -8,14 +8,14 @@ import { FlowchartRoutingModule } from './flowchart-routing.module';
 
 import { MatCardModule } from '@angular/material/card';
 import { FlowchartImageComponent } from './components/flowchart-image/flowchart-image.component';
-import { ProcessStatsComponent } from './components/process-stats/process-stats.component';
+import { CasesStatsComponent } from './components/cases-stats/cases-stats.component';
 
 @NgModule({
   providers: [FlowchartApi, FlowchartFacade, flowchartInitializerProvider],
   declarations: [
     FlowchartComponent,
     FlowchartImageComponent,
-    ProcessStatsComponent,
+    CasesStatsComponent,
   ],
   imports: [CommonModule, MatCardModule, FlowchartRoutingModule],
 })

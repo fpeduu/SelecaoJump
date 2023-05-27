@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProcessStatsComponent } from './process-stats.component';
+import { CasesStatsComponent } from './cases-stats.component';
 
 describe('FlowchartImageComponent', () => {
-  let component: ProcessStatsComponent;
-  let fixture: ComponentFixture<ProcessStatsComponent>;
+  let component: CasesStatsComponent;
+  let fixture: ComponentFixture<CasesStatsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProcessStatsComponent],
+      declarations: [CasesStatsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ProcessStatsComponent);
+    fixture = TestBed.createComponent(CasesStatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

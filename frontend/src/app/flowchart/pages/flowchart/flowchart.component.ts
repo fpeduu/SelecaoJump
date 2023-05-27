@@ -1,9 +1,7 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FlowchartFacade } from '../../flowchart.facade';
-import { Processo } from '../../types/Processo';
-// import * as d3 from 'd3';
 import { Observable } from 'rxjs';
-import { ProcessoStats } from '../../types/ProcessoStats';
+import { CasesStats } from '../../types/CasesStats';
 
 @Component({
   selector: 'app-flowchart',
@@ -13,13 +11,13 @@ import { ProcessoStats } from '../../types/ProcessoStats';
 export class FlowchartComponent {
   flowchartObservable: Observable<string>;
   flowchartImage: string = '';
-  flowchartStats: ProcessoStats = {} as ProcessoStats;
+  casesStats: CasesStats = {} as CasesStats;
 
   constructor(private facade: FlowchartFacade) {
     this.flowchartObservable = this.facade.getImage();
 
-    this.facade.getStats().subscribe((stats: ProcessoStats) => {
-      this.flowchartStats = stats;
+    this.facade.getStats().subscribe((stats: CasesStats) => {
+      this.casesStats = stats;
     });
 
     this.flowchartObservable.subscribe((image: string) => {

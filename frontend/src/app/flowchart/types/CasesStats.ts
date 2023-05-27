@@ -1,4 +1,4 @@
-export interface ProcessoStats {
+export interface CasesStats {
   movimentosCount: number;
   casesCount: number;
   avgMovimentosPerCase: number;

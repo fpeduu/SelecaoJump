@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AnalysisFacade } from '../../analysis.facade';
-import { Processo } from '../../types/Processo';
+import { Case } from '../../types/Case';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AnalysisComponent {
   selectedMovimento: string = '';
   title: string = '';
-  processoList: Processo[] = [];
+  processoList: Case[] = [];
 
   constructor(private facade: AnalysisFacade, private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {

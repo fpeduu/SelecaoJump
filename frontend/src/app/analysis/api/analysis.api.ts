@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Processo } from '../types/Processo';
+import { Case } from '../types/Case';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -39,10 +39,10 @@ export class AnalysisApi {
         totalMovimentos: 6,
         totalDuration: 60,
       },
-    ] as Processo[]);
+    ] as Case[]);
   }
 
   public fetchProcessosDataByName(name: string) {
-    return this.http.get<Processo[]>(`/api/processos/${name}`);
+    return this.http.get<Case[]>(`/api/processos/${name}`);
   }
 }
