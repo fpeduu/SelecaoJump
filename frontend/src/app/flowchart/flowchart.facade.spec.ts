@@ -1,7 +1,7 @@
-import { AnalysisFacade } from './flowchart.facade';
+import { FlowchartFacade } from './flowchart.facade';
 
-describe('AnalysisFacade', () => {
+describe('FlowchartFacade', () => {
   it('should create an instance', () => {
-    expect(new AnalysisFacade()).toBeTruthy();
+    expect(new FlowchartFacade()).toBeTruthy();
   });
 });
