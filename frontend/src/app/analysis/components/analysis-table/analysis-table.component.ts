@@ -11,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Case } from '../../types/Case';
 import { MatPaginator } from '@angular/material/paginator';
+import { formatDuration } from '../../utils/formatDuration';
 
 @Component({
   selector: 'app-analysis-table',
@@ -28,6 +29,8 @@ export class AnalysisTableComponent
     'totalMovimentos',
     'duration',
   ];
+
+  formatDuration = formatDuration;
 
   dataSource!: MatTableDataSource<Case>;
 
