@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnalysisModule } from './analysis/analysis.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlowchartModule } from './flowchart/flowchart.module';
+import { FlowchartSizeService } from './shared/services/flowchart-switch.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,7 @@ import { FlowchartModule } from './flowchart/flowchart.module';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [FlowchartSizeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

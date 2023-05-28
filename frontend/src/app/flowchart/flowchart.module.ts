@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { FlowchartImageComponent } from './components/flowchart-image/flowchart-image.component';
 import { CasesStatsComponent } from './components/cases-stats/cases-stats.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   providers: [FlowchartApi, FlowchartFacade, flowchartInitializerProvider],

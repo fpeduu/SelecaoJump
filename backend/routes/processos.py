@@ -1,6 +1,7 @@
+from typing import Optional
 from fastapi import APIRouter
 from pydantic import BaseModel
-from .controller import (core_instance, CASE_ID,
+from .controller import (core_instance, big_core_instance, CASE_ID,
     END_TIMESTAMP, START_TIMESTAMP, ACTIVITY
 )
 
@@ -11,7 +12,7 @@ router = APIRouter(
 )
 
 @router.get("/stats/", status_code=200)
-async def get_log_stats():
+async def get_log_stats(big_df: Optional[bool] = False):
     """
     Returns statistics about the log:
     casesCount: NPU (unique cases) count
@@ -27,7 +28,7 @@ async def get_log_stats():
         avgMovimentoDuration: seconds
     }
     """
-    df = core_instance.log.copy()
+    df = core_instance.log.copy() if not big_df else big_core_instance.log.copy()
     df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
     df["duration"] = df["duration"].astype('timedelta64[s]')
 
@@ -46,12 +47,13 @@ async def get_log_stats():
     }
 
 @router.get("/", status_code=200)
-async def get_all_processos_infos():
+async def get_all_processos_infos(big_df: Optional[bool] = False):
     """
     Returns a list of all processos with some stats
     """
 
-    cases, df = [], core_instance.log.copy()
+    cases = []
+    df = core_instance.log.copy() if not big_df else big_core_instance.log.copy()
     df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
     df["duration"] = df["duration"].astype('timedelta64[s]')
 
@@ -71,14 +73,15 @@ async def get_all_processos_infos():
 
 
 @router.get("/{movimento}", status_code=200)
-async def get_processos_infos(movimento: str):
+async def get_processos_infos(movimento: str, big_df: Optional[bool] = False):
     """
     Returns a list of processos with the pinned movimento with some stats and a count
     of how many times the given movimento happened.
     """
 
     pinned_movimento = movimento
-    cases, df = [], core_instance.log.copy()
+    cases = []
+    df = core_instance.log.copy() if not big_df else big_core_instance.log.copy()
     df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
     df["duration"] = df["duration"].astype('timedelta64[s]')
 

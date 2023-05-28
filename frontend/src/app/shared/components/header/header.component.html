@@ -12,4 +12,9 @@
     <mat-icon> cases </mat-icon>
     <p>Análise de processos</p>
   </span>
+
+  <span (click)="switchFlowchartSize()">
+    <mat-icon> autorenew </mat-icon>
+    <p>Fluxograma {{ isFlowchartBig() ? "grande" : "pequeno" }}</p>
+  </span>
 </mat-toolbar>

@@ -1,6 +1,7 @@
+from typing import Optional
 from fastapi.responses import FileResponse
 from routes.image import dfg_visualizer
-from .controller import core_instance
+from .controller import core_instance, big_core_instance
 from fastapi import APIRouter
 import pm4py
 
@@ -18,8 +19,8 @@ def generate_svg(eventlog):
     ).render()
 
 @router.get("/image/", status_code=200)
-async def get_eventlog_image():
+async def get_eventlog_image(big_df: Optional[bool] = False):
     """ Returns the svg image string of the log. """
-    event_log = core_instance.log.copy()
+    event_log = core_instance.log.copy() if not big_df else big_core_instance.log.copy()
     svg_file_path = generate_svg(event_log)
     return FileResponse(svg_file_path)

@@ -13,8 +13,6 @@ export class AnalysisComponent {
   title: string = '';
   processoList: Case[] = [];
 
-  loading: Boolean = true;
-
   constructor(private facade: AnalysisFacade, private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
       if (params['movimento']) {
@@ -31,7 +29,6 @@ export class AnalysisComponent {
 
     this.facade.getProcessoData().subscribe((processoData: any) => {
       this.processoList = processoData.cases;
-      this.loading = false;
     });
   }
 }

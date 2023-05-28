@@ -7,6 +7,10 @@
 
   <app-analysis-table
     [data]="processoList"
-    *ngIf="processoList"
+    *ngIf="processoList && processoList.length > 0"
   ></app-analysis-table>
+
+  <div class="no-data" *ngIf="processoList && processoList.length === 0">
+    <p>Nenhum dado encontrado</p>
+  </div>
 </div>
