@@ -1,12 +1,16 @@
 <div id="app-cases-stats">
   <mat-card>
     <mat-card-title> Qtd. de movimentos </mat-card-title>
-    <mat-card-content>{{ data.movimentosCount }}</mat-card-content>
+    <mat-card-content>{{
+      data.movimentosCount.toLocaleString("pt-BR")
+    }}</mat-card-content>
   </mat-card>
 
   <mat-card>
     <mat-card-title> Qtd. de processos </mat-card-title>
-    <mat-card-content>{{ data.casesCount }}</mat-card-content>
+    <mat-card-content>{{
+      data.casesCount.toLocaleString("pt-BR")
+    }}</mat-card-content>
   </mat-card>
 
   <mat-card>
@@ -25,6 +29,10 @@
 
   <mat-card>
     <mat-card-title> Média de movimentos por processo </mat-card-title>
-    <mat-card-content>{{ data.avgMovimentosPerCase }}</mat-card-content>
+    <mat-card-content>{{
+      data.avgMovimentosPerCase.toLocaleString("pt-BR", {
+        maximumFractionDigits: 2
+      })
+    }}</mat-card-content>
   </mat-card>
 </div>
