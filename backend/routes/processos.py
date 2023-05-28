@@ -29,6 +29,7 @@ async def get_log_stats():
     """
     df = core_instance.log.copy()
     df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
+    df["duration"] = df["duration"].astype('timedelta64[s]')
 
     movimentos_count = len(df)
     cases_count = len(df[CASE_ID].unique())
@@ -52,6 +53,7 @@ async def get_all_processos_infos():
 
     cases, df = [], core_instance.log.copy()
     df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
+    df["duration"] = df["duration"].astype('timedelta64[s]')
 
     for NPU, group in df.groupby(CASE_ID):
         trace_duration = group['duration'].sum()
@@ -78,6 +80,7 @@ async def get_processos_infos(movimento: str):
     pinned_movimento = movimento
     cases, df = [], core_instance.log.copy()
     df['duration'] = df[END_TIMESTAMP] - df[START_TIMESTAMP]
+    df["duration"] = df["duration"].astype('timedelta64[s]')
 
     for NPU, group in df.groupby(CASE_ID):
         trace_duration = group['duration'].sum()
@@ -93,7 +96,5 @@ async def get_processos_infos(movimento: str):
                 "totalDuration": trace_duration.total_seconds(),
                 "movimentos": pinned_movimento_count
             })
-        
-
 
     return { "cases": cases }
