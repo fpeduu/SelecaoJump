@@ -23,4 +23,4 @@ class Core:
         })
 
 core_instance = Core()
-core_instance.load_log_data("./data/pequeno.csv")
+core_instance.load_log_data("./data/grande.csv")

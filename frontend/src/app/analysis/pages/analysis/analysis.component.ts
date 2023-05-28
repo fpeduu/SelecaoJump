@@ -13,22 +13,25 @@ export class AnalysisComponent {
   title: string = '';
   processoList: Case[] = [];
 
+  loading: Boolean = true;
+
   constructor(private facade: AnalysisFacade, private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
       if (params['movimento']) {
         this.selectedMovimento = params['movimento'];
         this.facade.fetchProcessosDataByName(this.selectedMovimento);
+
+        this.title = `Movimento ${params['movimento']}`;
       } else {
         this.facade.fetchProcessosData();
+
+        this.title = 'Todos os movimentos';
       }
     });
 
     this.facade.getProcessoData().subscribe((processoData: any) => {
-      if (this.selectedMovimento) {
-        this.title = `Movimento ${this.selectedMovimento}`;
-      } else this.title = 'Todos os movimentos';
-
       this.processoList = processoData.cases;
+      this.loading = false;
     });
   }
 }
