@@ -1,6 +1,14 @@
 <div id="app-flowchart">
-  <app-cases-stats [data]="casesStats"></app-cases-stats>
+  <mat-spinner *ngIf="!(casesStats && flowchartImage)"></mat-spinner>
+
+  <app-cases-stats
+    [data]="casesStats"
+    *ngIf="casesStats && flowchartImage"
+  ></app-cases-stats>
   <div id="app-flowchart-scroll">
-    <app-flowchart-image [data]="flowchartImage"></app-flowchart-image>
+    <app-flowchart-image
+      [data]="flowchartImage"
+      *ngIf="casesStats && flowchartImage"
+    ></app-flowchart-image>
   </div>
 </div>

@@ -1,4 +1,10 @@
 <div id="app-analysis">
   <p class="title">{{ title }}</p>
-  <app-analysis-table [data]="processoList"></app-analysis-table>
+
+  <mat-spinner *ngIf="!processoList"></mat-spinner>
+
+  <app-analysis-table
+    [data]="processoList"
+    *ngIf="processoList"
+  ></app-analysis-table>
 </div>

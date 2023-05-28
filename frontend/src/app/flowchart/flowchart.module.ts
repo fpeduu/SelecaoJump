@@ -6,6 +6,7 @@ import { FlowchartFacade } from './flowchart.facade';
 import { flowchartInitializerProvider } from './flowchart.initializer';
 import { FlowchartRoutingModule } from './flowchart-routing.module';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { FlowchartImageComponent } from './components/flowchart-image/flowchart-image.component';
 import { CasesStatsComponent } from './components/cases-stats/cases-stats.component';
@@ -17,6 +18,11 @@ import { CasesStatsComponent } from './components/cases-stats/cases-stats.compon
     FlowchartImageComponent,
     CasesStatsComponent,
   ],
-  imports: [CommonModule, MatCardModule, FlowchartRoutingModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    FlowchartRoutingModule,
+  ],
 })
 export class FlowchartModule {}

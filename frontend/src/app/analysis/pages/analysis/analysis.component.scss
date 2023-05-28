@@ -1,8 +1,16 @@
 #app-analysis {
-    p.title {
-        font-size: 2em;
-        font-weight: 300;
-    }
-    
-    padding: 1em;
+  p.title {
+    font-size: 2em;
+    font-weight: 300;
+  }
+
+  mat-spinner {
+    align-self: center;
+    margin-top: 20vh;
+  }
+
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
 }
